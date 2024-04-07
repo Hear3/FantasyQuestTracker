@@ -1,7 +1,7 @@
 # Fantasy Quest Tracker
 
 ## Design
-**Figma:** [Projekt](https://www.figma.com/file/FEFe6yD64K6KuKz90uXfLe/Fantasy-Quest-Tracker?type=design&node-id=6%3A458&mode=design&t=jyt4c640fiwMCqeQ-1)
+**Figma:** [Projekt](https://www.figma.com/file/FEFe6yD64K6KuKz90uXfLe/Fantasy-Quest-Tracker?type=design&node-id=0%3A1&mode=design&t=6zo3D0WPmgNciwgn-1)
 
 ## Opis aplikacji
 Fantasy Quest Tracker to aplikacja oparta o framework Vue.js 3, która łączy w sobie funkcjonalność tradycyjnego task managera z elementami gry RPG. Użytkownicy mogą tworzyć i zarządzać listami zadań, śledzić swoje postępy, rozwijać swoją postać zdobywając kolejne poziomy i uzbrajając postać w zakupiony w sklepie ekwipunek.
