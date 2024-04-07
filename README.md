@@ -1,6 +1,6 @@
 # Fantasy Quest Tracker
 
-## Projekt Designu
+## Design
 **Figma:** [Projekt](https://www.figma.com/file/FEFe6yD64K6KuKz90uXfLe/Fantasy-Quest-Tracker?type=design&node-id=6%3A458&mode=design&t=jyt4c640fiwMCqeQ-1)
 
 ## Opis aplikacji
