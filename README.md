@@ -1,35 +1,29 @@
-# vuek-kalkulator
+# Fantasy Quest Tracker
 
-This template should help get you started developing with Vue 3 in Vite.
+## Design
+**Figma:** [Projekt](https://www.figma.com/file/FEFe6yD64K6KuKz90uXfLe/Fantasy-Quest-Tracker?type=design&node-id=0%3A1&mode=design&t=6zo3D0WPmgNciwgn-1)
 
-## Recommended IDE Setup
+## Opis aplikacji
+Fantasy Quest Tracker to aplikacja oparta o framework Vue.js 3, która łączy w sobie funkcjonalność tradycyjnego task managera z elementami gry RPG. Użytkownicy mogą tworzyć i zarządzać listami zadań, śledzić swoje postępy, rozwijać swoją postać zdobywając kolejne poziomy i uzbrajając postać w zakupiony w sklepie ekwipunek.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Widoki
+>   * Widok logowania i rejestracji
+>   * Widok strony głównej (widok zadań)
+>   * Widok postaci użytkownika
+>   * Widok zadania
+>   * Widok sklepu z przedmiotami
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+## Funkcje aplikacji
+>   * Logowanie do serwisu
+>   * Rejestracja konta użytkownika
+>   * Konfiguracja konta użytkownika
+>	* Kustomizacja Postaci
+>   * **Quest Tracker**
+>       * Widok informacji o postaci i jej aktualny wygląd.
+>       * Wyszukiwarka zadań
+>       * Widok aktualnie posiadanych zadań, wraz z ich podsumowaniem
+>       * Możliwość przejścia do dokładnego opisu i edycji poszczególnych zadań
+>		* Możliwość dodawania i edycji zadań
+>   * **Item Shop**
+>       * Widok aktualnie możliwych do zakupienia przez użtkownika przedmiotów
+>		* Możliwość wydawania waluty w aplikacji na przedmioty, których wymagania spełnia nasza postać
