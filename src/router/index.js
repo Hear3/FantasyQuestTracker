@@ -16,6 +16,10 @@ const router = createRouter({
       component: () => import('@/views/SignIn.vue')
     },
     {
+      path: '/shop',
+      component: () => import('@/views/Shop.vue')
+    },
+    {
       path: '/feed',
       component: () => import('@/views/Feed.vue'),
       meta: {
@@ -39,7 +43,6 @@ const getCurrentUser = () => {
 }
 
 router.beforeEach(async (to, from, next) => {
-  console.log('Before each tick')
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (await getCurrentUser()) {
       next()

@@ -1,12 +1,16 @@
 <template>
   <nav>
     <li><router-link to="/">Home</router-link></li>
-    <li><router-link to="/register">Register</router-link></li>
-    <li><router-link to="/sign-in">Sign In</router-link></li>
-    <li><router-link to="/feed">Feed</router-link></li>
-    <li><button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button></li>
+    <li><router-link to="/shop">Shop</router-link></li>
+    <li v-if="isLoggedIn == false"><router-link to="/register">Register</router-link></li>
+    <li v-if="isLoggedIn == false"><router-link to="/sign-in">Sign In</router-link></li>
+    <li v-if="isLoggedIn == true"><router-link to="/feed">Feed</router-link></li>
+    <li v-if="isLoggedIn == true"><button @click="handleSignOut">Sign Out</button></li>
   </nav>
   <RouterView />
+  <div class="footer">
+    <p>Fantasy Quest Tracker - All rights reserved</p>
+  </div>
 </template>
 
 <script setup>
@@ -36,7 +40,10 @@ const handleSignOut = () => {
 </script>
 
 <style>
-nav ul,
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+* {
+  font-family: 'Ubuntu Sans', sans-serif; /* Use Google Font */
+}
 nav li {
   margin: 0;
   padding: 0;
@@ -45,7 +52,7 @@ nav li {
 
 /* Styling the navigation bar */
 nav {
-  background-color: #4caf50; /* Green background for visibility */
+  background-color: rgb(236, 59, 133); /* Green background for visibility */
   padding: 10px 20px; /* Padding around the nav bar */
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Center items vertically */
@@ -81,7 +88,7 @@ button:hover {
   background-color: #c0392b; /* Darker shade on hover */
 }
 h1 {
-  color: #333; /* Dark grey color for the header */
+  color: rgb(236, 59, 133); /* Dark grey color for the header */
   font-size: 24px; /* Set font size for headers */
   text-align: center; /* Center-align the heading */
 }
@@ -127,5 +134,20 @@ button[onclick*='signInWithGoogle'] {
 
 button[onclick*='signInWithGoogle']:hover {
   background-color: #c23321; /* Darker red on hover */
+}
+.footer {
+  width: 100%;
+  background-color: rgb(236, 59, 133);
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  color: white;
 }
 </style>
