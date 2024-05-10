@@ -1,0 +1,17 @@
+# Ignoruj katalogi generowane przez Vue CLI
+/node_modules
+
+# Ignoruj pliki konfiguracyjne użytkowników
+/.env.local
+/.env.*.local
+
+# Ignoruj pliki wyjściowe bundla
+/dist
+
+# Ignoruj pliki konfiguracyjne IDE/editors
+/.idea
+/.vscode
+
+# Ignoruj pliki tymczasowe
+/.cache
+/.sass-cache
