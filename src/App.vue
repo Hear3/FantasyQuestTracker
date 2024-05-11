@@ -28,10 +28,8 @@ onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       store.dispatch('updateLoggedIn', true)
-      console.log()
     } else {
       store.dispatch('updateLoggedIn', false)
-      console.log(store.state.isLoggedIn)
     }
   })
 })
@@ -118,7 +116,6 @@ input[type='password']:focus {
 /* Styling the buttons to match the navigation styling but with differentiation */
 button {
   padding: 10px 20px; /* Padding for better touch area */
-  margin-top: 10px; /* Extra space above the button */
   border: none; /* No borders */
   border-radius: 4px; /* Rounded corners */
   cursor: pointer; /* Pointer to indicate clickable */
