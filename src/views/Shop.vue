@@ -14,11 +14,16 @@ import Inventory from '@/components/Inventory.vue'
 import db from '@/main.js'
 import { doc, getDoc, collection, getDocs, updateDoc, arrayUnion } from 'firebase/firestore'
 import { useStore } from 'vuex'
-import { ref } from 'vue'
 </script>
 <script>
+let userEmail = ''
 export default {
   created() {
+    this.getUserData()
+    const userdata = this.getUserData()
+    userdata.then((email) => {
+      userEmail = email
+    })
     this.getPlayerItems()
     this.getShopItems()
   },
@@ -35,11 +40,14 @@ export default {
     }
   },
   methods: {
-    async getPlayerItems() {
+    async getUserData() {
       const store = useStore()
-      const userEmail = ref(null)
-      userEmail.value = store.state.userEmail
-      const docSnap = await getDoc(doc(db, 'users', userEmail.value))
+      const docSnap = await getDoc(doc(db, 'users', store.state.userEmail))
+      const data = docSnap.data()
+      return data.email
+    },
+    async getPlayerItems() {
+      const docSnap = await getDoc(doc(db, 'users', userEmail))
       return docSnap.data()
     },
     async getShopItems() {
@@ -55,10 +63,7 @@ export default {
       })
     },
     async handleAddItem(item) {
-      const store = useStore()
-      const userEmail = ref(null)
-      userEmail.value = store.state.userEmail
-      const updateRef = doc(db, 'users', userEmail.value)
+      const updateRef = doc(db, 'users', userEmail)
       await updateDoc(updateRef, {
         items: arrayUnion(item.id)
       })

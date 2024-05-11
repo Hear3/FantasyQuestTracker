@@ -74,7 +74,7 @@ export default {
     },
     async getQuestData() {
       const store = useStore()
-      const docSnap = await getDoc(doc(db, 'users', store.state.userEmail))
+      const docSnap = await getDoc(collection(db, 'users', store.state.userEmail, 'quests'))
       const data = docSnap.data()
       console.log(data.email)
     }

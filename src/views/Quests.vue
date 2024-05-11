@@ -43,21 +43,26 @@ const reward_xp = ref(0)
 const reward_gold = ref(0)
 const time_to_complete = ref('')
 const description = ref('')
+let userEmail = ''
 export default {
   created() {
     this.getUserData()
+    const userdata = this.getUserData()
+    userdata.then((email) => {
+      userEmail = email
+    })
   },
   methods: {
     async getUserData() {
       const store = useStore()
       const docSnap = await getDoc(doc(db, 'users', store.state.userEmail))
       const data = docSnap.data()
-      console.log(data.email)
       return data.email
     },
     async uploadQuest() {
+      console.log(userEmail)
       console.log('Adding quest...')
-      await addDoc(collection(db, 'users', 'xxx@xxx.xxx', 'quests'), {
+      await addDoc(collection(db, 'users', userEmail, 'quests'), {
         quest_name: quest_name.value,
         difficulty: difficulty.value,
         reward_xp: reward_xp.value,
@@ -66,6 +71,7 @@ export default {
         desc: description.value
       })
       alert('Dodano zadanie!')
+      window.location.reload()
     }
   }
 }
