@@ -31,10 +31,14 @@
         </div>
       </div>
     </div>
+    <div v-for="quest in questItems" :key="quest.quest_name">
+      <Quest :item="quest" />
+    </div>
   </div>
 </template>
 
 <script setup>
+import Quest from '@/components/Quest.vue'
 import { useStore } from 'vuex'
 import db from '@/main.js'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
@@ -58,6 +62,14 @@ const updateExperienceWidth = (experience) => {
   experienceWidth.value = widthPercentage
 }
 export default {
+  components: {
+    Quest
+  },
+  data() {
+    return {
+      questItems: []
+    }
+  },
   created() {
     this.getPlayerData()
   },
@@ -68,10 +80,12 @@ export default {
       const docSnap = await getDoc(doc(db, 'users', userEmail))
       const data = docSnap.data()
       console.log(data)
-      // const colSnap = await getDoc(collection(db, 'users', userEmail, 'quests'))
-      // const questData = colSnap.data()
-      // console.log(questData)
-
+      const colSnap = await getDocs(collection(db, 'users', userEmail, 'quests'))
+      colSnap.forEach((doc) => {
+        const questData = doc.data()
+        this.questItems.push(questData)
+      })
+      console.log(this.questItems)
       characterName.value = data.character_name
       classLevel.value = `${data.class} - Level ${data.level}`
       activeQuests.value = data.active_quests
