@@ -50,6 +50,7 @@ export default {
   created() {
     this.getItems()
     this.getPlayerData()
+    this.getQuestData()
   },
   methods: {
     async getItems() {
@@ -70,6 +71,12 @@ export default {
       completedQuests.value = data.completed_quests
       experiencePoints.value = data.experience_points
       updateExperienceWidth(data.experience)
+    },
+    async getQuestData() {
+      const store = useStore()
+      const docSnap = await getDoc(doc(db, 'users', store.state.userEmail))
+      const data = docSnap.data()
+      console.log(data.email)
     }
   }
 }
