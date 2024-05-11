@@ -81,16 +81,17 @@ export default {
       const data = docSnap.data()
       console.log(data)
       const colSnap = await getDocs(collection(db, 'users', userEmail, 'quests'))
+      activeQuests.value = 0
       colSnap.forEach((doc) => {
         const questData = doc.data()
         const questId = doc.id // questId is a string
         questData.id = questId
         this.questItems.push(questData)
+        activeQuests.value += 1
       })
       console.log(this.questItems)
       characterName.value = data.character_name
       classLevel.value = `${data.class} - Level ${data.level}`
-      activeQuests.value = data.active_quests
       goldCoins.value = data.gold_coins
       completedQuests.value = data.completed_quests
       experiencePoints.value = data.experience_points
