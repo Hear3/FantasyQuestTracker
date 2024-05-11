@@ -60,5 +60,6 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  border-radius: 15px;
 }
 </style>

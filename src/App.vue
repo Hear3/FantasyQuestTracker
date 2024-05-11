@@ -58,11 +58,12 @@ nav li {
 
 /* Styling the navigation bar */
 nav {
-  background-color: rgb(236, 59, 133); /* Green background for visibility */
+  background-color: rgb(0, 121, 191); /* Green background for visibility */
   padding: 10px 20px; /* Padding around the nav bar */
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Center items vertically */
   justify-content: space-between; /* Space out navigation items */
+  border-radius: 5px;
 }
 
 /* Styling individual navigation links */
@@ -142,7 +143,7 @@ button[onclick*='signInWithGoogle']:hover {
 }
 .footer {
   width: 100%;
-  background-color: rgb(236, 59, 133);
+  background-color: rgb(132, 134, 134);
   padding: 20px;
   text-align: center;
   position: fixed;

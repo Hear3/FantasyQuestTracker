@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div>
-    <h1>Add Quest</h1>
+    <h1>Embark on a Quest!</h1>
     <form @submit.prevent="addQuest">
       <label for="quest-name">Quest Name:</label>
       <input type="text" id="quest-name" v-model="quest_name" />
@@ -76,3 +76,68 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+div {
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #f4f4f4;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #5B92E5;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+  display: block;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #5B92E5;
+  outline: none;
+}
+
+button#sendButton {
+  background-color: #2E8B57;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 30px;
+}
+
+button#sendButton:hover {
+  background-color: #276A47;
+  
+}
+</style>
+

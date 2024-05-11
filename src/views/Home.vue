@@ -1,8 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <h1>Welcome to Fantasy Quest Tracker</h1>
+  <br>
+  <h1>Embark on an epic quest with Fantasy Quest Tracker!</h1>
+  <br>
   <div id="userPage" v-if="store.state.isLoggedIn == true">
-    <h1>User is logged in</h1>
     <div id="userPanel">
       <div id="leftUserPanel">
         <img src="@/assets/characters/model1.png" alt="playerModel" />
@@ -83,10 +84,11 @@ export default {
 </script>
 <style>
 #userPanel {
-  background-color: rgb(236, 59, 133);
+  background-color: rgb(223, 223, 233);
   padding: 15px;
   display: flex;
   height: 100%;
+  border-radius: 15px;
 }
 #leftUserPanel {
   flex: 0 0 30%;
@@ -106,7 +108,7 @@ export default {
 }
 .experience-bar {
   margin-top: auto;
-  height: 20px;
+  height: 40px;
   background-color: #f0f0f0;
   border-radius: 10px;
   overflow: hidden;
@@ -173,5 +175,11 @@ textarea {
 
 button:hover {
   background-color: #c23377;
+}
+
+h1 {
+  color: #5B92E5;
+  text-align: center;
+  margin-bottom: 16px;
 }
 </style>
