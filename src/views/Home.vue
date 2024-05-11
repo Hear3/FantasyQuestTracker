@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <br>
+  <br />
   <h1>Embark on an epic quest with Fantasy Quest Tracker!</h1>
-  <br>
+  <br />
   <div id="userPage" v-if="store.state.isLoggedIn == true">
     <div id="userPanel">
       <div id="leftUserPanel">
@@ -178,7 +178,7 @@ button:hover {
 }
 
 h1 {
-  color: #5B92E5;
+  color: #5b92e5;
   text-align: center;
   margin-bottom: 16px;
 }
