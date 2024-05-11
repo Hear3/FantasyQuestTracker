@@ -5,6 +5,10 @@
 <script>
 import db from '@/main.js'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
 export default {
   created() {
     // this.getBoots()

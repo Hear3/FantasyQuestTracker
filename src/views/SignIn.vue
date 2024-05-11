@@ -26,7 +26,7 @@ const register = () => {
       console.log('Successfully signed in!')
       console.log(data)
       console.log(auth.currentUser)
-      router.push('/feed')
+      router.push('/')
     })
     .catch((error) => {
       console.log(error.code)

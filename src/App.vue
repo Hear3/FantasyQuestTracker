@@ -2,10 +2,11 @@
   <nav>
     <li><router-link to="/">Home</router-link></li>
     <li><router-link to="/shop">Shop</router-link></li>
-    <li v-if="isLoggedIn == false"><router-link to="/register">Register</router-link></li>
-    <li v-if="isLoggedIn == false"><router-link to="/sign-in">Sign In</router-link></li>
-    <li v-if="isLoggedIn == true"><router-link to="/feed">Feed</router-link></li>
-    <li v-if="isLoggedIn == true"><button @click="handleSignOut">Sign Out</button></li>
+    <li v-if="store.state.isLoggedIn == false">
+      <router-link to="/register">Register</router-link>
+    </li>
+    <li v-if="store.state.isLoggedIn == false"><router-link to="/sign-in">Sign In</router-link></li>
+    <li v-if="store.state.isLoggedIn == true"><button @click="handleSignOut">Sign Out</button></li>
   </nav>
   <RouterView />
   <div class="footer">
@@ -14,25 +15,29 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
+import { useStore } from 'vuex'
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 import { useRouter, RouterLink, RouterView } from 'vue-router'
+
 const router = useRouter()
-const isLoggedIn = ref(false)
-let auth
+const store = useStore()
+
 onMounted(() => {
-  auth = getAuth()
+  const auth = getAuth()
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      isLoggedIn.value = true
-      console.log(user.uid)
+      store.dispatch('updateLoggedIn', true)
+      console.log()
     } else {
-      isLoggedIn.value = false
+      store.dispatch('updateLoggedIn', false)
+      console.log(store.state.isLoggedIn)
     }
   })
 })
 
 const handleSignOut = () => {
+  const auth = getAuth()
   signOut(auth).then(() => {
     router.push('/')
   })
