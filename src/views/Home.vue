@@ -32,7 +32,7 @@
       </div>
     </div>
     <div v-for="quest in questItems" :key="quest.quest_name">
-      <Quest :item="quest" />
+      <Quest :item="quest" @delete="handleDeleteQuest" />
     </div>
   </div>
 </template>
@@ -41,7 +41,7 @@
 import Quest from '@/components/Quest.vue'
 import { useStore } from 'vuex'
 import db from '@/main.js'
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, deleteDoc } from 'firebase/firestore'
 import Character from '@/components/Character.vue'
 
 const store = useStore()
@@ -56,11 +56,11 @@ const goldCoins = ref(0)
 const completedQuests = ref(0)
 const experiencePoints = ref(0)
 const experienceWidth = ref('0%')
-
 const updateExperienceWidth = (experience) => {
   const widthPercentage = `${experience}%`
   experienceWidth.value = widthPercentage
 }
+let userEmail = ''
 export default {
   components: {
     Quest
@@ -76,13 +76,15 @@ export default {
   methods: {
     async getPlayerData() {
       const store = useStore()
-      const userEmail = store.state.userEmail
+      userEmail = store.state.userEmail
       const docSnap = await getDoc(doc(db, 'users', userEmail))
       const data = docSnap.data()
       console.log(data)
       const colSnap = await getDocs(collection(db, 'users', userEmail, 'quests'))
       colSnap.forEach((doc) => {
         const questData = doc.data()
+        const questId = doc.id // questId is a string
+        questData.id = questId
         this.questItems.push(questData)
       })
       console.log(this.questItems)
@@ -93,6 +95,13 @@ export default {
       completedQuests.value = data.completed_quests
       experiencePoints.value = data.experience_points
       updateExperienceWidth(data.experience)
+    },
+    async handleDeleteQuest(quest) {
+      console.log(quest.quest_name)
+      console.log(userEmail)
+      console.log(quest.id)
+      deleteDoc(doc(db, 'users', userEmail, 'quests', quest.id))
+      window.location.reload()
     }
   }
 }
