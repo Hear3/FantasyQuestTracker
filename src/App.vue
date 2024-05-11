@@ -3,6 +3,7 @@
     <li><router-link to="/">Home</router-link></li>
     <li><router-link to="/shop">Item Merchant</router-link></li>
     <li><router-link to="/quests">Add Quests</router-link></li>
+    <li><router-link to="/character">Character</router-link></li>
     <li v-if="store.state.isLoggedIn == false">
       <router-link to="/register">Register</router-link>
     </li>
