@@ -59,21 +59,18 @@ const updateExperienceWidth = (experience) => {
 }
 export default {
   created() {
-    this.getItems()
     this.getPlayerData()
-    this.getQuestData()
   },
   methods: {
-    async getItems() {
-      const docsSnap = await getDocs(collection(db, 'items'))
-      docsSnap.forEach((doc) => {
-        console.log(doc.data())
-      })
-    },
     async getPlayerData() {
       const store = useStore()
-      const docSnap = await getDoc(doc(db, 'users', store.state.userEmail))
+      const userEmail = store.state.userEmail
+      const docSnap = await getDoc(doc(db, 'users', userEmail))
       const data = docSnap.data()
+      console.log(data)
+      // const colSnap = await getDoc(collection(db, 'users', userEmail, 'quests'))
+      // const questData = colSnap.data()
+      // console.log(questData)
 
       characterName.value = data.character_name
       classLevel.value = `${data.class} - Level ${data.level}`
@@ -82,12 +79,6 @@ export default {
       completedQuests.value = data.completed_quests
       experiencePoints.value = data.experience_points
       updateExperienceWidth(data.experience)
-    },
-    async getQuestData() {
-      const store = useStore()
-      const docSnap = await getDoc(collection(db, 'users', store.state.userEmail, 'quests'))
-      const data = docSnap.data()
-      console.log(data.email)
     }
   }
 }

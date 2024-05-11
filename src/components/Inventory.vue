@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="inventory">
-    <h2>Ekwipunek:</h2>
+    <h2>Current equipment:</h2>
     <ul>
       <li v-for="item in items" :key="item.id">{{ item.name }} - {{ item.price }} Coins</li>
     </ul>
