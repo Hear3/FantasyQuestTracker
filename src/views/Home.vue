@@ -14,9 +14,18 @@
         </h2>
         <h2>{{ classLevel }}</h2>
         <h2>Active Quests: {{ activeQuests }}</h2>
-        <h2>Gold Coins: {{ goldCoins }}</h2>
+        <br>
         <h2>Completed Quests: {{ completedQuests }}</h2>
-        <h2>Experience Points: {{ experiencePoints }}</h2>
+        <br>
+        <h2>Gold Coins: {{ goldCoins }}</h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 >Experience Points: {{ experiencePoints }}</h1>
         <div class="experience-bar">
           <div class="experience-fill" :style="{ '--experience-width': experienceWidth }"></div>
         </div>
@@ -182,4 +191,10 @@ h1 {
   text-align: center;
   margin-bottom: 16px;
 }
+
+h2 {
+  color: #5B92E5;
+  margin-bottom: 16px;
+}
+
 </style>
