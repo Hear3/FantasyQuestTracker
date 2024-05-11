@@ -8,13 +8,15 @@
     <Inventory :items="inventoryItems" />
   </div>
 </template>
-
-<script>
+<script setup>
 import ShopItem from '@/components/ShopItem.vue'
 import Inventory from '@/components/Inventory.vue'
 import db from '@/main.js'
 import { doc, getDoc, collection, getDocs, updateDoc, arrayUnion } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
+import { useStore } from 'vuex'
+import { ref } from 'vue'
+</script>
+<script>
 export default {
   created() {
     this.getPlayerItems()
@@ -34,18 +36,15 @@ export default {
   },
   methods: {
     async getPlayerItems() {
-      const auth = getAuth()
-      const userEmail = auth.currentUser.email
-      const docRef = doc(db, 'users', userEmail)
-      const docSnap = await getDoc(docRef)
-      let playerItems = docSnap.data()
-      console.log(playerItems)
-      return playerItems
+      const store = useStore()
+      const userEmail = ref(null)
+      userEmail.value = store.state.userEmail
+      const docSnap = await getDoc(doc(db, 'users', userEmail.value))
+      return docSnap.data()
     },
     async getShopItems() {
-      const docsSnap = await getDocs(collection(db, 'items'))
       const playerItems = await this.getPlayerItems()
-
+      const docsSnap = await getDocs(collection(db, 'items'))
       docsSnap.forEach((doc) => {
         const itemData = doc.data()
         if (!playerItems.items.includes(itemData.id)) {
@@ -56,9 +55,10 @@ export default {
       })
     },
     async handleAddItem(item) {
-      const auth = getAuth()
-      const userEmail = auth.currentUser.email
-      const updateRef = doc(db, 'users', userEmail)
+      const store = useStore()
+      const userEmail = ref(null)
+      userEmail.value = store.state.userEmail
+      const updateRef = doc(db, 'users', userEmail.value)
       await updateDoc(updateRef, {
         items: arrayUnion(item.id)
       })

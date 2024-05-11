@@ -21,6 +21,13 @@ const router = createRouter({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/quests',
+      component: () => import('@/views/Quests.vue'),
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })

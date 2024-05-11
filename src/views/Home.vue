@@ -2,7 +2,7 @@
 <template>
   <h1>Welcome to Fantasy Quest Tracker</h1>
   <div id="userPage" v-if="store.state.isLoggedIn == true">
-    <h1>Bro is logged in</h1>
+    <h1>User is logged in</h1>
     <div id="userPanel">
       <div id="leftUserPanel">
         <img src="@/assets/characters/model1.png" alt="playerModel" />
@@ -21,7 +21,6 @@
         </div>
       </div>
     </div>
-    <h1>Active quests:</h1>
   </div>
 </template>
 
@@ -29,12 +28,12 @@
 import { useStore } from 'vuex'
 import db from '@/main.js'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
-import { ref } from 'vue'
 
 const store = useStore()
 </script>
 
 <script>
+import { ref } from 'vue'
 const characterName = ref('')
 const classLevel = ref('')
 const activeQuests = ref(0)
@@ -60,8 +59,10 @@ export default {
       })
     },
     async getPlayerData() {
-      const docSnap = await getDoc(doc(db, 'users', 'xxx@xxx.xxx'))
+      const store = useStore()
+      const docSnap = await getDoc(doc(db, 'users', store.state.userEmail))
       const data = docSnap.data()
+
       characterName.value = data.character_name
       classLevel.value = `${data.class} - Level ${data.level}`
       activeQuests.value = data.active_quests
@@ -109,5 +110,61 @@ export default {
   background-color: #4caf50;
   width: var(--experience-width);
   transition: width 1s ease;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: rgb(236, 59, 133);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+  color: rgb(236, 59, 133);
+}
+
+input[type='text'],
+input[type='number'],
+select,
+textarea {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  width: 100%;
+}
+
+textarea {
+  height: 100px;
+}
+
+#sendButton {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(236, 59, 133);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c23377;
 }
 </style>
