@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <br>
+  <br />
   <h1>Embark on an epic quest with Fantasy Quest Tracker!</h1>
-  <br>
+  <br />
   <div id="userPage" v-if="store.state.isLoggedIn == true">
     <div id="userPanel">
       <div id="leftUserPanel">
-        <img src="@/assets/characters/model1.png" alt="playerModel" />
+        <Character />
       </div>
       <div id="rightUserPanel">
         <h2>
@@ -14,18 +14,18 @@
         </h2>
         <h2>{{ classLevel }}</h2>
         <h2>Active Quests: {{ activeQuests }}</h2>
-        <br>
+        <br />
         <h2>Completed Quests: {{ completedQuests }}</h2>
-        <br>
+        <br />
         <h2>Gold Coins: {{ goldCoins }}</h2>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h1 >Experience Points: {{ experiencePoints }}</h1>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h1>Experience Points: {{ experiencePoints }}</h1>
         <div class="experience-bar">
           <div class="experience-fill" :style="{ '--experience-width': experienceWidth }"></div>
         </div>
@@ -38,6 +38,7 @@
 import { useStore } from 'vuex'
 import db from '@/main.js'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import Character from '@/components/Character.vue'
 
 const store = useStore()
 </script>
@@ -187,14 +188,13 @@ button:hover {
 }
 
 h1 {
-  color: #5B92E5;
+  color: #5b92e5;
   text-align: center;
   margin-bottom: 16px;
 }
 
 h2 {
-  color: #5B92E5;
+  color: #5b92e5;
   margin-bottom: 16px;
 }
-
 </style>
