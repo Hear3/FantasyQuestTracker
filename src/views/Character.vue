@@ -1,10 +1,9 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="my-character-view">
-    <h1>Character Inventory</h1>
     <Character />
     <div class="item-list">
       <div v-for="(item, key) in items" :key="key">
+
         <button @click="toggleItem(key)">{{ item.visible ? 'Remove' : 'Equip' }} {{ key }}</button>
       </div>
     </div>
@@ -33,12 +32,16 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .item-list {
-  margin-top: 20px;
+  margin-top: 2px;
   display: flex;
   flex-direction: column;
+}
+
+button {
+  margin-bottom: 3px;
 }
 </style>

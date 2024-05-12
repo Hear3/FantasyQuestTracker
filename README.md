@@ -10,8 +10,9 @@ Fantasy Quest Tracker to aplikacja oparta o framework Vue.js 3, która łączy w
 >   * Widok logowania i rejestracji
 >   * Widok strony głównej (widok zadań)
 >   * Widok postaci użytkownika
->   * Widok zadania
+>   * Widok formularza dodawania zadania
 >   * Widok sklepu z przedmiotami
+    * Widok histori zadań
 
 ## Funkcje aplikacji
 >   * Logowanie do serwisu
@@ -27,3 +28,20 @@ Fantasy Quest Tracker to aplikacja oparta o framework Vue.js 3, która łączy w
 >   * **Item Shop**
 >       * Widok aktualnie możliwych do zakupienia przez użtkownika przedmiotów
 >		* Możliwość wydawania waluty w aplikacji na przedmioty, których wymagania spełnia nasza postać
+
+##  Opis techniczny
+
+    * Vue.js 
+    * Vue Router
+    * Composition API
+    * VueX
+    * API Firebase Authenticator
+    * Firestore database
+    * Ekrany:
+        * Home - aktualne questy + wyposarzona postać gracza + statystyki 
+        * History - prototyp dla prowadzenia histori osiągnięć użytkownika ( co i kiedy)
+        * Item Merchant - podzielone na sklep z przedmiotami i ekwipunek na te które gracz już posiada
+        * Add Quest - formulaż dodawania zadań przez gracza
+        * Character - modularna postać gracza z możliwością customizacji wygladu
+        * SingIn/SingOut 
+

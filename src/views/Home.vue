@@ -155,8 +155,9 @@ export default {
 }
 
 h1 {
+  color: #5b92e5;
   text-align: center;
-  color: rgb(236, 59, 133);
+  margin-bottom: 16px;
 }
 
 form {
@@ -202,11 +203,7 @@ button:hover {
   background-color: #c23377;
 }
 
-h1 {
-  color: #5b92e5;
-  text-align: center;
-  margin-bottom: 16px;
-}
+
 
 h2 {
   color: #5b92e5;

@@ -8,6 +8,10 @@ const router = createRouter({
       component: () => import('@/views/Home.vue')
     },
     {
+      path: '/history',
+      component: () => import('@/views/QuestHistory.vue')
+    },
+    {
       path: '/register',
       component: () => import('@/views/Register.vue')
     },

@@ -1,6 +1,7 @@
 <template>
   <nav>
     <li><router-link to="/">Home</router-link></li>
+    <li><router-link to="/history">History</router-link></li>
     <li><router-link to="/shop">Item Merchant</router-link></li>
     <li><router-link to="/quests">Add Quests</router-link></li>
     <li><router-link to="/character">Character</router-link></li>
@@ -96,9 +97,9 @@ button:hover {
   background-color: #c0392b; /* Darker shade on hover */
 }
 h1 {
-  color: rgb(236, 59, 133); /* Dark grey color for the header */
-  font-size: 24px; /* Set font size for headers */
-  text-align: center; /* Center-align the heading */
+  color: #5b92e5;
+  text-align: center;
+  margin-bottom: 16px;
 }
 
 /* Style for input fields to make them more appealing */
@@ -145,7 +146,7 @@ button[onclick*='signInWithGoogle']:hover {
 .footer {
   width: 100%;
   background-color: rgb(132, 134, 134);
-  padding: 20px;
+  padding: 3px;
   text-align: center;
   position: fixed;
   bottom: 0;

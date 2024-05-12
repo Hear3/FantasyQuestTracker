@@ -187,4 +187,14 @@ h1 {
   color: #007BFF;
   font-weight: bold;
 }
+
+.footer {
+    width: 100%;
+    background-color: rgb(132, 134, 134);
+    padding: 3px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
 </style>
