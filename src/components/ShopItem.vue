@@ -3,7 +3,7 @@
     <img :src="item.image" alt="" class="item-image" />
     <h3>{{ item.name }}</h3>
     <p>{{ item.description }}</p>
-    <p>Price: {{ item.price }} coins</p>
+    <p>Price: {{ item.price }} Gold Coins</p>
   </div>
 </template>
 

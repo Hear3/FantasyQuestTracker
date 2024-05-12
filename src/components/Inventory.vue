@@ -3,7 +3,7 @@
   <div class="inventory">
     <h2>Current equipment:</h2>
     <ul>
-      <li v-for="item in items" :key="item.id">{{ item.name }} - {{ item.price }} Coins</li>
+      <li v-for="item in items" :key="item.id">{{ item.name }} - {{ item.price }} Gold Coins</li>
     </ul>
   </div>
 </template>
