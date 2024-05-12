@@ -42,7 +42,7 @@
 import Quest from '@/components/Quest.vue'
 import { useStore } from 'vuex'
 import db from '@/main.js'
-import { collection, doc, getDoc, getDocs, deleteDoc } from 'firebase/firestore'
+import { collection, doc, setDoc, getDoc, getDocs, deleteDoc } from 'firebase/firestore'
 import Character from '@/components/Character.vue'
 
 const store = useStore()
@@ -99,10 +99,28 @@ export default {
       updateExperienceWidth(data.experience)
     },
     async handleDeleteQuest(quest) {
-      console.log(quest.quest_name)
-      console.log(userEmail)
-      console.log(quest.id)
       await deleteDoc(doc(db, 'users', userEmail, 'quests', quest.id))
+      const userRef = doc(db, 'users', userEmail)
+      const userSnap = await getDoc(userRef)
+      let newLvlValue = userSnap.data().level
+      const newQuestAmount = userSnap.data().completed_quests + 1
+      const newGoldAmount = userSnap.data().gold_coins + quest.reward_gold
+      let newXPAmount = userSnap.data().experience_points + quest.reward_xp
+      if (newXPAmount >= 100) {
+        newXPAmount -= 100
+        newLvlValue += 1
+      }
+      await setDoc(
+        userRef,
+        {
+          completed_quests: newQuestAmount,
+          experience: newXPAmount,
+          experience_points: newXPAmount,
+          gold_coins: newGoldAmount,
+          level: newLvlValue
+        },
+        { merge: true }
+      )
       window.location.reload()
     }
   }
