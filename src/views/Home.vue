@@ -34,6 +34,7 @@
     <div v-for="quest in questItems" :key="quest.quest_name">
       <Quest :item="quest" @delete="handleDeleteQuest" />
     </div>
+    <br />
   </div>
 </template>
 
@@ -202,8 +203,6 @@ textarea {
 button:hover {
   background-color: #c23377;
 }
-
-
 
 h2 {
   color: #5b92e5;

@@ -1,9 +1,10 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="my-character-view">
     <Character />
     <div class="item-list">
+      <br />
       <div v-for="(item, key) in items" :key="key">
-
         <button @click="toggleItem(key)">{{ item.visible ? 'Remove' : 'Equip' }} {{ key }}</button>
       </div>
     </div>
