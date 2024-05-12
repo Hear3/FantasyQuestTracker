@@ -25,13 +25,12 @@ Fantasy Quest Tracker to aplikacja oparta o framework Vue.js 3, która łączy w
 >   - Kustomizacja Postaci
 > - **Quest Tracker**
 >   - Widok informacji o postaci i jej aktualny wygląd.
->   - Wyszukiwarka zadań
 >   - Widok aktualnie posiadanych zadań, wraz z ich podsumowaniem
->   - Możliwość przejścia do dokładnego opisu i edycji poszczególnych zadań
->     - Możliwość dodawania i edycji zadań
+>   - Możliwość wypełniania zadań
 > - **Item Shop**
 >   - Widok aktualnie możliwych do zakupienia przez użtkownika przedmiotów
->     - Możliwość wydawania waluty w aplikacji na przedmioty, których wymagania spełnia nasza postać
+>   - Możliwość wydawania waluty w aplikacji na przedmioty
+>   - Podgląd na aktualnie posiadane przedmioty
 
 ## Opis techniczny
 
