@@ -101,7 +101,7 @@ export default {
       console.log(quest.quest_name)
       console.log(userEmail)
       console.log(quest.id)
-      deleteDoc(doc(db, 'users', userEmail, 'quests', quest.id))
+      await deleteDoc(doc(db, 'users', userEmail, 'quests', quest.id))
       window.location.reload()
     }
   }
